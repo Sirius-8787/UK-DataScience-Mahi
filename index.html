@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UK MSc Data Science — Next Path Consultants</title>
+<style>
+  :root {
+    --bg:#f9f8f6; --surface:#fff; --surface2:#f3f2ef;
+    --border:rgba(0,0,0,0.1); --border-s:rgba(0,0,0,0.18);
+    --text:#1a1a18; --muted:#6b6b67; --faint:#9b9b97;
+    --gbg:#eaf3de; --gtxt:#27500a; --gmid:#3b6d11; --gbar:#639922;
+    --bbg:#e6f1fb; --btxt:#0c447c; --bmid:#185fa5; --bbar:#378add;
+    --ambg:#faeeda; --amtxt:#633806;
+    --rbg:#fcebeb; --rtxt:#791f1f;
+    --pubg:#eeedfe; --putxt:#3c3489;
+    --r:10px; --rs:6px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6}
+
+  .ph{background:var(--surface);border-bottom:1px solid var(--border);padding:2rem 0 1.5rem;margin-bottom:2rem}
+  .phi{max-width:920px;margin:0 auto;padding:0 1.5rem}
+
+  .ph-inner{display:flex;align-items:center;gap:1.5rem}
+  .ph-logo{width:100px;height:100px;object-fit:contain;flex-shrink:0}
+  .ptag{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--bmid);margin-bottom:.4rem}
+  .ptitle{font-size:28px;font-weight:700;line-height:1.25;margin-bottom:.3rem}
+  .psub{font-size:14px;color:var(--muted)}
+
+  .wrap{max-width:920px;margin:0 auto;padding:0 1.5rem 4rem}
+
+  .tabs{display:flex;gap:4px;background:var(--surface2);border-radius:var(--r);padding:4px;margin-bottom:1.5rem}
+  .tbtn{flex:1;padding:8px 12px;font-size:13px;font-weight:500;border:none;background:transparent;color:var(--muted);border-radius:var(--rs);cursor:pointer;transition:all .15s}
+  .tbtn.active{background:var(--surface);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+
+  .controls{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:1.25rem}
+  .controls select,.controls input{font-size:13px;padding:7px 11px;border:1px solid var(--border-s);border-radius:var(--rs);background:var(--surface);color:var(--text);height:36px;outline:none}
+  .controls select:focus,.controls input:focus{border-color:var(--bmid)}
+  .controls input{flex:1;min-width:160px}
+
+  .summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:1.5rem}
+  .met{background:var(--surface2);border-radius:var(--rs);padding:.85rem 1rem}
+  .met.g{background:var(--gbg)} .met.b{background:var(--bbg)}
+  .met-lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:4px}
+  .met.g .met-lbl{color:var(--gmid)} .met.b .met-lbl{color:var(--bmid)}
+  .met-val{font-size:22px;font-weight:700;color:var(--text)}
+  .met.g .met-val{color:var(--gtxt)} .met.b .met-val{color:var(--btxt)}
+  .met-sub{font-size:11px;color:var(--faint);margin-top:2px}
+  .met.g .met-sub{color:var(--gmid)} .met.b .met-sub{color:var(--bmid)}
+
+  .sbar{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+  .slbl{font-size:12px;color:var(--muted);white-space:nowrap;margin-right:2px}
+  .sbtn{font-size:12px;padding:4px 11px;border:1px solid var(--border-s);border-radius:20px;background:var(--surface);color:var(--muted);cursor:pointer;transition:all .15s;white-space:nowrap}
+  .sbtn.active{background:var(--text);color:#fff;border-color:var(--text)}
+
+  .grid{display:flex;flex-direction:column;gap:10px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.1rem 1.25rem}
+
+  .ch{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px}
+  .uname{font-size:15px;font-weight:600;color:var(--text)}
+  .umeta{font-size:12px;color:var(--muted);margin-top:2px}
+  .bgs{display:flex;gap:6px;flex-wrap:wrap;flex-shrink:0;align-items:flex-start}
+  .bg{font-size:11px;padding:3px 9px;border-radius:20px;font-weight:600;white-space:nowrap}
+  .bvh{background:var(--gbg);color:var(--gtxt)}
+  .bh{background:var(--bbg);color:var(--btxt)}
+  .bm{background:var(--ambg);color:var(--amtxt)}
+  .bl{background:var(--rbg);color:var(--rtxt)}
+  .b2{background:var(--pubg);color:var(--putxt)}
+
+  .ig{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px}
+  .ib-lbl{font-size:11px;color:var(--muted)}
+  .ib-val{font-size:13px;font-weight:600;color:var(--text);margin-top:1px}
+  .ib-val.ns{color:var(--faint);font-style:italic;font-weight:400}
+  .ib-note{font-size:11px;color:var(--amtxt);margin-top:1px}
+
+  .cdiv{border:none;border-top:1px solid var(--border);margin:8px 0}
+  .cdet{font-size:12px;color:var(--muted);line-height:1.5}
+  .crea{font-size:12px;color:var(--faint);font-style:italic;margin-top:4px}
+
+  .frow{display:grid;grid-template-columns:1fr 1fr 1fr;border:1px solid var(--border);border-radius:var(--rs);overflow:hidden;margin-bottom:10px}
+  .fc{padding:10px 13px}
+  .fc:not(:last-child){border-right:1px solid var(--border)}
+  .fcb{background:var(--surface2)} .fcg{background:var(--gbg)} .fcbl{background:var(--bbg)}
+  .fclbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+  .fclbl-b{color:var(--muted)} .fclbl-g{color:var(--gmid)} .fclbl-bl{color:var(--bmid)}
+  .fcamt{font-size:18px;font-weight:700}
+  .fcamt-b{color:var(--text)} .fcamt-g{color:var(--gtxt)} .fcamt-bl{color:var(--btxt)}
+  .fcamt.ns{font-size:13px;font-style:italic;color:var(--faint);font-weight:400}
+  .fcsave{font-size:11px;margin-top:2px}
+  .fcsave-g{color:var(--gmid)} .fcsave-bl{color:var(--bmid)} .fcsave-no{color:var(--faint)}
+  .fcdl{font-size:11px;color:var(--amtxt);margin-top:2px}
+
+  .btrack{background:var(--surface2);border-radius:4px;height:6px;position:relative;margin-bottom:6px}
+  .bseg{position:absolute;left:0;top:0;height:6px;border-radius:4px}
+  .bsgross{background:#d3d1c7} .bsguar{background:var(--gbar)} .bsmax{background:var(--bbar);opacity:.8}
+  .bleg{display:flex;gap:14px;font-size:11px;color:var(--muted)}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:3px;vertical-align:middle}
+  .schnote{font-size:11px;color:var(--faint);margin-top:8px}
+
+  .nores{text-align:center;padding:3rem;color:var(--muted);font-size:14px}
+  .pfoot{text-align:center;font-size:12px;color:var(--faint);padding:2rem 1rem;border-top:1px solid var(--border);margin-top:2rem}
+
+  @media(max-width:620px){
+    .ig{grid-template-columns:repeat(2,1fr)}
+    .frow{grid-template-columns:1fr}
+    .fc:not(:last-child){border-right:none;border-bottom:1px solid var(--border)}
+    .ptitle{font-size:22px}
+    .sbar{gap:5px}
+  }
+</style>
+</head>
+<body>
+
+<div class="ph">
+  <div class="phi">
+    <div class="ph-inner">
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA7Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBxdWFsaXR5ID0gNjYK/9sAQwALBwgKCAcLCgkKDAwLDRAbEhAPDxAhGBkUGycjKSknIyYlLDE/NSwuOy8lJjZKNztBQ0ZHRio0TVJMRFI/RUZD/9sAQwEMDAwQDhAgEhIgQy0mLUNDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0ND/8AAEQgCvAK8AwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A9cooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKq6jqNvpsIkuHxu4VQMs30FNJt2RM5xhFyk7JFqsq88R6fakqJTMwOMRDPbrnp+tctqut3Wpttc+XD2iQnB5zz6np+VZtdcML1kfPYnPHfloL5v/I6Kfxfcsw8i2hRcchyWOfwxVN/EuqM5IuAoJyFEa4H5ismiuhUYLoeTPMMVPeb+Wn5GvF4m1ONwzTLIB/C0YwfywavW3jCQEC6tkYZ+9GSMD6HOfzFc1RQ6MH0HTzHFU9pv56/md/Y67YXxVUm2SN0jk+U9cY9Cfoa0a8vra0jxHcWOyKb99brgYP3lHsf6H07VzVML1ievhc7TfLXVvNfqjtqKitbqG8iEtvIsiHuO3sfQ1LXI1Y+gjJSV09AooooGFQXt/aafEJb66gtoy20PNIEBPXGT34P5VPVDW9EsNetVttTt/PhRxIq72XDAEZypB6E0ARf8JPoX/Qa0z/wLj/xqw2saaksETahZrJcKrQoZ1BlDcKVGeQe2Otea+CvCWi6pr/iW2vbLzYbK68u3XzXXYu+QYyCCeFHXPSqPjDT/ALX4k1qzgiyujaVF9jUPgxIhiYnJPOFeTrn88UAev3V1BZwNPdTxQQpjdJK4VRk4GSeOpFFrdQXkCz2s8U8L52yROGU4ODgjjqK8+1TWh4uk8JaZG8DC+Zbu+jKuqkR53Jz1BKyjHPKrzjk6fwgvDdeDkiKhRa3EkQI/iBw+f/H8fhQB2dFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAFXVL+PTbNriQbscKoONx9K4G+vZr+5ae4bc56AdFHoParWv6mdTviy/wCpjysYBPIz97nuf8PSs2vRoUuRXe58fmeOeJqckX7q/HzCiitfRdBm1LbK58u23YLd29dv8s/zxWspKKuzz6NGdafJTV2ZFTQWlxcKWgt5ZQDglELY/Ku8sdHsbHBhgUuMfO/zNn1yen4Yq9XNLFLoj3KWQyavUn93+f8AwDzSe3mt2AnikiJ5AdSufzqKvUKyr/w9Y3iHZEIJMYV4hgD6jof5+9EcUn8SJrZFNK9KV/J6HCUVf1bSLnS5P3q7oS2ElHRv8D/9frVCupSUldHiVKc6UnCas0XdK1ObS7nzYjuU8PGTww/x967+3njuYUmhcPG4ypFeZ1v+EdT+z3X2OQgRTHK8dH+vvjH1xXPiKXMuZbnrZRjnSn7Gb917eT/4J2NFFFcB9WFFFFAHJeCtEv8AS9f8S3N7B5UN7deZbtvVt675DnAORww6460WPhy6PxA1rVbuCM6ddWqwIHIbzcrGG+X0Gwg565HWutooA43wN4NvPD2ozT395FcLFAbWz8rjERkLtuGOuSD1PUj0qX4X6JqGg6BPbanB5Ez3TSKu9WypRBnKkjqDXW0UAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFZXii7+y6RIFJDzHyxgA9ev6Aj8a1a5HxtMzXtvCQNqRlwe+ScH/wBBFa0Y800cGZVnSw0mt3p95ztFFFemfEmv4c0j+0rkvMrC2j+8RxuP93P+f1ruEVUQIihVUYAAwAKp6LZfYNNhhK4fG5+BnceufXHT8Ku15lao5y8j7bLsJHDUVp7z3/y+QUUV5J8SfiB9u83SNFl/0Xlbi5Q/671VT/d9T/F9PvZHeX/GHxT+zTzWWgJFKU+U3rncucEHYvQ4OMMcg4PBGDXL2vxN8TQTrJJeRXCLnMUsCBW477QD78GuRooGfQvhvX9O8YaO0kajOAtxbOctG39RxkN7diCBzOsae+m3zwNyh+aM5zlc8Z96w/gk9wNdv0Xf9mNrmTA+XeGG3J9cF8fjXovi2yFzpnnKCZLc7hgE5U8H+hz7Vvh6nLK3Rnk5thFWoua+KOvy6nE0qkqwKkgg5BHakor0T489G0q8+36fDc4wXX5hjuODj2yKtVzngibda3MG37jh8567hjH/AI7+tdHXlVI8s2j7vBVnWw8Kj3a/4AUUUVB1BRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFcz458ZW3hay2rtm1GZcwQE8Af329F/UngdyADV1zxBpmgRRyapdrbrKxVAVLFiOuAoJwPXpyPUVyn/AAt3Qv8An01P/v1H/wDF15DqF9c6ley3d7M01xM253bqT/QdgOgFV6B2Ponw94s0jxHldOut0yoHeF1KuoPseDjocEjpzyK2a+YIZZIJUlhdo5EYMjocFSOQQexr37wB4hbxJ4djuplYXELeROxAAdwAdwx6gg9Bg5FAjoa4XxUzNrk4ZiQoUKCeg2g/zJruq4bxXG6a3MzDAkVWXnqMAfzBrpwvxnjZ5f6srd1+TMip7GFbi9ghckLJIqEjrgnFQVr+G9MmvL6OdflhgcMzkdSDnaPf+X8+2clGLbPmsPSlVqxhFX1O5ooryT4k/ED7d5ukaLL/AKLytxcof9d6qp/u+p/i+n3vJPvg+JPxA+3ebpGiy/6Lytxcof8AXeqqf7vqf4vp97ziiigYVY0+xudSvYrSyhaa4mbaiL1J/oO5PQCjT7G51K9itLKFpriZtqIvUn+g7k9AK908DeDbbwtZbm2zajMuJ5wOAP7i+i/qTyewAA/wL4Si8KaayGTzby42tcSAnbkZwqj0GTz1Oc+gG5qETT2FzFGMu8TKo9SQanqvqbmLTbp1YqywuVIOCDg4px3RnVtySv2PN6KKK9c/PTovBMxW8uIcDa8Ycn3Bx/7NXXVyfgiENc3M2eUQJj1yc/8AstdZXnYj+Iz7LJ7/AFSN/P8AMKKKKwPTCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAoormfHPjK28LWW1ds2ozLmCAngD++3ov6k8DuQAHjnxlbeFrLau2bUZlzBATwB/fb0X9SeB3I8L1C+udSvZbu9maa4mbc7t1J/oOwHQCjUL651K9lu72ZpriZtzu3Un+g7AdAKr0DCiiigAr1H4Gf8xr/th/7Ury6vUfgZ/wAxr/th/wC1KAPUa5TxtbkT29yMlWUxnjgYORz75P5V1dVNV0+PU7XyJSVAcMGHUY6/pkfjWlKfJNNnFj8O8RQlBb9DjdD0aTVJsnKW6H53/oPf+X8+6t4I7aFIYUCRoMKo7UW8EdtCkMKBI0GFUdq8n+JPxA+3ebpGiy/6Lytxcof9d6qp/u+p/i+n3nVquo/IjAYCGEh3k93/AF0D4k/ED7d5ukaLL/ovK3Fyh/13qqn+76n+L6fe84oorI9AKsafY3OpXsVpZQtNcTNtRF6k/wBB3J6AUafY3OpXsVpZQtNcTNtRF6k/0HcnoBXungbwbbeFrLc22bUZlxPOBwB/cX0X9SeT2AADwN4NtvC1lubbNqMy4nnA4A/uL6L+pPJ7AdNRRQIKwPGN8sVktouC85BYeig5/nj8jWxfXsNhbNPcNhR0A6sfQe9efX97Nf3TTztlj0HZR2Arow9PmlzPZHj5vjFSpOlH4pfkV6KKfFG80qRRjLuwVRnGSelegfJpNuyOu8F23l6fLOVIMr4B7FR/9cmt+oLG1Wys4rdMERqBkDGT3P4nmp68qpLmk2feYSj7ChGn2X49QoooqDoCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiuZ8c+MrbwtZbV2zajMuYICeAP77ei/qTwO5AAeOfGVt4Wstq7ZtRmXMEBPAH99vRf1J4HcjwvUL651K9lu72ZpriZtzu3Un+g7AdAKNQvrnUr2W7vZmmuJm3O7dSf6DsB0AqvQMKKK9H+G3w/+3eVq+tRf6Lw1vbOP9d6Mw/u+g/i+n3gDN8O+BJJ/Deoa5qitHDHZyy2kPQyEISHPovcDv16fe4qvo7xZ/wAirrH/AF4zf+gNXzjQAV6j8DP+Y1/2w/8AaleXV6j8DP8AmNf9sP8A2pQB6jRRXknxJ+IH27zdI0WX/ReVuLlD/rvVVP8Ad9T/ABfT7wIPiT8QPt3m6Rosv+i8rcXKH/Xeqqf7vqf4vp97ziiigYVY0+xudSvYrSyhaa4mbaiL1J/oO5PQCjT7G51K9itLKFpriZtqIvUn+g7k9AK908DeDbbwtZbm2zajMuJ5wOAP7i+i/qTyewAAeBvBtt4WstzbZtRmXE84HAH9xfRf1J5PYDozNGJhEZE80jcE3Ddj1xVDXNYj0uHAw9w4+RP6n2/n/LhbieS5meaZy8jnLMe9b0qDmrvQ8nHZpDDSUIrmfXy/4J6JJqFnE5SS7gRl6q0gBH4Vkah4rtokxZqZ3I4Ygqo6+vJ7cfrXHUV0RwsVvqeTVzuvNWglH8Sxf3s9/cNNcPuY9B2UegFV6KK6EklZHjylKbcpO7YV03g7TC0hv5PurlYhg8nu306j8/Ss/QtFl1GdHdCtqpyzMCA4z0H+eK7lFVECIoVVGAAMACubEVbLlR7mUYBzkq9RaLbz8xaKKK4T6cKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKK5nxz4ytvC1ltXbNqMy5ggJ4A/vt6L+pPA7kAB458ZW3hay2rtm1GZcwQE8Af329F/UngdyPC9QvrnUr2W7vZmmuJm3O7dSf6DsB0Ao1C+udSvZbu9maa4mbc7t1J/oOwHQCq9Awoor0f4bfD/7d5Wr61F/ovDW9s4/13ozD+76D+L6feAD4bfD/AO3eVq+tRf6Lw1vbOP8AXejMP7voP4vp971uiigRl+LP+RV1j/rxm/8AQGr5xr6O8Wf8irrH/XjN/wCgNXzjQNBXqPwM/wCY1/2w/wDaleXVfsdZvNP02+sbWTyor7YJyv3mVd3y57A7jn1xjpkEA7j4k/ED7d5ukaLL/ovK3Fyh/wBd6qp/u+p/i+n3vOKKKACrGn2NzqV7FaWULTXEzbURepP9B3J6AUafY3OpXsVpZQtNcTNtRF6k/wBB3J6AV7p4G8G23hay3Ntm1GZcTzgcAf3F9F/Unk9gAA8DeDbbwtZbm2zajMuJ5wOAP7i+i/qTyewGprmsR6XDgYe4cfIn9T7fz/lpVVvdNtL/AB9pgVyOjcg/TI5xz0qoOKfvbGGIVWVNqk0peZ57cTyXMzzTOXkc5Zj3qOutn8HwNt8i6lT13qGz+WKqT+D7lWHkXMTrjkuCp/TNegq9PufJVMrxibbjf5r/AIc52iukg8HzsD591Gh7bFLZ/PFXbXwlaR4NxLJMQeg+VSP5/rQ8RTXUKeU4uf2berX/AA5yMUUk0gjiRnc9FUZJ/Cuj0rwq7N5monavaJG5PPc+n09e1dHaWVvZJstoUjB64HJ+p6mp656mJb0joexhclp0/erPmfbp/wAERFVECIoVVGAAMACloorlPbCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigDmfHPjK28LWW1ds2ozLmCAngD++3ov6k8DuR4XqF9c6ley3d7M01xM253bqT/AEHYDoBVrxLqra3r17qBLlZ5SY96gEIOEBA4yFAH4Vm0DCiivR/ht8P/ALd5Wr61F/ovDW9s4/13ozD+76D+L6feAD4bfD/7d5Wr61F/ovDW9s4/13ozD+76D+L6fe9boooEFFFFAGX4s/5FXWP+vGb/ANAavnGvpjVrL+0tKvLLf5f2mB4d+M7dykZx36181TRSQSvFMjRyIxV0cYKkcEEdjQNDKKKKACrGn2NzqV7FaWULTXEzbURepP8AQdyegFGn2NzqV7FaWULTXEzbURepP9B3J6AV7p4G8G23hay3Ntm1GZcTzgcAf3F9F/Unk9gAA8DeDbbwtZbm2zajMuJ5wOAP7i+i/qTyewHTUUUCCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAPDPiZ4ZutG124vthexvpmkjlHRXbkofQ5zj1H0OOQr6gmijn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UAY03hq1n8UQa9LPctdQRmOKPKiNVwRjG3J+8x5PU+nFbNFFAGNpfhiz0rXL7VbSW5WS+yZoDJmIsTndjGc5z343HGK2aKKACqGv6RBr2kz6ddPKkM23c0RAYYYMMZBHUelX6KAINOs49P0+2s4SzR28SxIXOSQoAGffisdPBumReKR4giM0d3lmMaFRGzFSpJGM5OSevXmt+igAooooAKzfEWiW3iHS3sLt5UidlYtEQG4Oe4NaVFAEGnWcen6fbWcJZo7eJYkLnJIUADPvxU9FFABUGoWNtqVlLaXsKzW8y7XRuhH9D3B6g1PRQBwDfDCSBZLfTvEeoWuny/6y2OSHyMNnDKDkcfd/Ous8N+H7Lw3p32KwEhjLmRmkbczMcDJ7dABwB0rTooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//9k=" alt="Next Path Consultants" class="ph-logo">
+      <div>
+        <div class="ptag">Study Abroad Guide · United Kingdom</div>
+        <div class="ptitle">UK MSc Data Science Programmes</div>
+        <div class="psub">16 universities &nbsp;·&nbsp; Tuition, scholarships, visa chances &amp; course delivery at a glance</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="tabs">
+    <button class="tbtn active" onclick="switchTab('compare')">Programme Comparison</button>
+    <button class="tbtn" onclick="switchTab('fees')">Net Fee Calculator</button>
+  </div>
+
+  <!-- TAB 1: COMPARE -->
+  <div id="tab-compare">
+    <div class="controls">
+      <select id="c1-city"><option value="">All cities</option><option>London</option><option>Birmingham</option><option>Edinburgh</option><option>Glasgow</option><option>Leeds</option><option>Liverpool</option><option>Manchester</option><option>Southampton</option><option>Newcastle</option></select>
+      <select id="c1-visa"><option value="">All visa chances</option><option value="Very High">Very High</option><option value="High">High</option><option value="Moderate">Moderate</option><option value="Lowest">Lowest</option></select>
+      <select id="c1-yr"><option value="">2-yr pathway: any</option><option value="Yes">Yes</option><option value="No">No</option></select>
+      <input type="text" id="c1-search" placeholder="Search university…">
+    </div>
+    <div class="summary">
+      <div class="met"><div class="met-lbl">Universities shown</div><div class="met-val" id="c1-count">16</div></div>
+      <div class="met"><div class="met-lbl">Avg tuition</div><div class="met-val" id="c1-fee">—</div></div>
+      <div class="met g"><div class="met-lbl">Avg guaranteed sch.</div><div class="met-val" id="c1-sch">—</div></div>
+      <div class="met"><div class="met-lbl">Very High visa</div><div class="met-val" id="c1-vh">—</div></div>
+    </div>
+    <div class="sbar">
+      <span class="slbl">Sort by</span>
+      <button class="sbtn active" data-tab="c1" data-sort="name">Name A–Z</button>
+      <button class="sbtn" data-tab="c1" data-sort="fee_asc">Tuition ↑</button>
+      <button class="sbtn" data-tab="c1" data-sort="fee_desc">Tuition ↓</button>
+      <button class="sbtn" data-tab="c1" data-sort="guar_desc">Guaranteed sch. ↓</button>
+      <button class="sbtn" data-tab="c1" data-sort="max_desc">Max sch. ↓</button>
+      <button class="sbtn" data-tab="c1" data-sort="visa">Visa chance</button>
+      <button class="sbtn" data-tab="c1" data-sort="city">City A–Z</button>
+    </div>
+    <div class="grid" id="c1-grid"></div>
+  </div>
+
+  <!-- TAB 2: NET FEE -->
+  <div id="tab-fees" style="display:none">
+    <div class="controls">
+      <select id="c2-city"><option value="">All cities</option><option>London</option><option>Birmingham</option><option>Edinburgh</option><option>Glasgow</option><option>Leeds</option><option>Liverpool</option><option>Manchester</option><option>Southampton</option><option>Newcastle</option></select>
+      <select id="c2-visa"><option value="">All visa chances</option><option value="Very High">Very High</option><option value="High">High</option><option value="Moderate">Moderate</option><option value="Lowest">Lowest</option></select>
+      <select id="c2-yr"><option value="">2-yr pathway: any</option><option value="Yes">Yes</option><option value="No">No</option></select>
+      <input type="text" id="c2-search" placeholder="Search university…">
+    </div>
+    <div class="summary">
+      <div class="met"><div class="met-lbl">Avg gross tuition</div><div class="met-val" id="c2-gross">—</div></div>
+      <div class="met g"><div class="met-lbl">Avg after guaranteed</div><div class="met-val" id="c2-guar">—</div><div class="met-sub" id="c2-gsub"></div></div>
+      <div class="met b"><div class="met-lbl">Avg after max sch.</div><div class="met-val" id="c2-max">—</div><div class="met-sub" id="c2-msub"></div></div>
+    </div>
+    <div class="sbar">
+      <span class="slbl">Sort by</span>
+      <button class="sbtn active" data-tab="c2" data-sort="net_guar_asc">Net (guaranteed) ↑</button>
+      <button class="sbtn" data-tab="c2" data-sort="net_guar_desc">Net (guaranteed) ↓</button>
+      <button class="sbtn" data-tab="c2" data-sort="net_max_asc">Net (max) ↑</button>
+      <button class="sbtn" data-tab="c2" data-sort="net_max_desc">Net (max) ↓</button>
+      <button class="sbtn" data-tab="c2" data-sort="gross_asc">Gross fee ↑</button>
+      <button class="sbtn" data-tab="c2" data-sort="gross_desc">Gross fee ↓</button>
+      <button class="sbtn" data-tab="c2" data-sort="guar_saving">Biggest guaranteed saving</button>
+      <button class="sbtn" data-tab="c2" data-sort="max_saving">Biggest max saving</button>
+      <button class="sbtn" data-tab="c2" data-sort="name">Name A–Z</button>
+      <button class="sbtn" data-tab="c2" data-sort="city">City A–Z</button>
+    </div>
+    <div class="grid" id="c2-grid"></div>
+  </div>
+
+</div>
+
+<div class="pfoot">
+  &copy; 2026 Next Path Consultants &nbsp;·&nbsp; Data compiled for guidance purposes only. Verify fees, scholarships and visa conditions directly with each university before applying.
+  &nbsp;·&nbsp; "Not sure" = data unconfirmed at time of compilation &nbsp;·&nbsp; Last updated April 2026
+</div>
+
+<script>
+// schGuar / schMax:
+//   number  = confirmed £ amount
+//   null    = Not Sure (NS) — unconfirmed
+//   0       = explicitly not available (NA)
+const unis = [
+  {
+    name:"Aston University", city:"Birmingham", course:"MSc Data Science",
+    visa:"Very High", fee:24800, schGuar:4000, schMax:10000,
+    guarDL:null, maxDL:null, twoYr:"No",
+    delivery:"Assignments",
+    reasons:"Triple Accredited Business School · High CS ranking"
+  },
+  {
+    name:"BirkBeck, University of London", city:"London", course:"MSc Advanced Computing (Data Science Pathway)",
+    visa:"High", fee:22900, schGuar:3000, schMax:null,
+    guarDL:null, maxDL:null, twoYr:"No",
+    delivery:"Coursework, written examinations and a project.",
+    reasons:"University of London Campus"
+  },
+  {
+    name:"University of Birmingham", city:"Birmingham", course:"MSc Data Science",
+    visa:"Very High", fee:34740, schGuar:null, schMax:12500,
+    guarDL:null, maxDL:null, twoYr:"No",
+    delivery:"Coursework and/or examination",
+    reasons:"Russell Group"
+  },
+  {
+    name:"Brunel University London", city:"London", course:"MSc Data Science & Analytics",
+    visa:"Very High", fee:24795, schGuar:6000, schMax:null,
+    guarDL:null, maxDL:null, twoYr:"Yes",
+    delivery:"Balance of coursework, class tests and exams — from written reports to statistical modelling and programming exercises.",
+    reasons:"University of London Campus"
+  },
+  {
+    name:"City St George's University of London", city:"London", course:"MSc Data Science",
+    visa:"Very High", fee:19950, schGuar:2000, schMax:null,
+    guarDL:null, maxDL:null, twoYr:"Yes",
+    delivery:"Coursework",
+    reasons:"University of London Campus"
+  },
+  {
+    name:"Coventry University", city:"Birmingham", course:"MSc Data Science",
+    visa:"Lowest", fee:18600, schGuar:2000, schMax:null,
+    guarDL:null, maxDL:null, twoYr:"Yes",
+    delivery:"Assignments in teams",
+    reasons:"Not as highly ranked as others on this list"
+  },
+  {
+    name:"Goldsmiths, University of London", city:"London", course:"MSc Data Science",
+    visa:"High", fee:22000, schGuar:2200, schMax:7700,
+    guarDL:"May 15 (deposit deadline)", maxDL:null, twoYr:"No",
+    delivery:"Less assignment-heavy",
+    reasons:"University of London Campus — Guaranteed = 10% of fee, Max = 35% of fee"
+  },
+  {
+    name:"Heriot Watt University", city:"Edinburgh", course:"MSc Data Science",
+    visa:"Moderate", fee:26296, schGuar:0, schMax:6000,
+    guarDL:null, maxDL:null, twoYr:"Yes",
+    delivery:"Not specified",
+    reasons:"Not as highly ranked as others on this list"
+  },
+  {
+    name:"University of Leeds", city:"Leeds", course:"MSc Data Science & Analytics",
+    visa:"Very High", fee:34250, schGuar:6000, schMax:22000,
+    guarDL:null, maxDL:"May 15", twoYr:"No",
+    delivery:"Examination, assignments, coursework, reports and practical activities.",
+    reasons:"Russell Group"
+  },
+  {
+    name:"University of Liverpool", city:"Liverpool", course:"MSc Data Science and Artificial Intelligence",
+    visa:"Very High", fee:34000, schGuar:7000, schMax:null,
+    guarDL:null, maxDL:null, twoYr:"No",
+    delivery:"Less assignment-heavy",
+    reasons:"Russell Group"
+  },
+  {
+    name:"Manchester Metropolitan University", city:"Manchester", course:"MSc Data Science",
+    visa:"Very High", fee:21000, schGuar:5000, schMax:null,
+    guarDL:null, maxDL:null, twoYr:"No",
+    delivery:"100% coursework",
+    reasons:"Triple Accredited Business Institution"
+  },
+  {
+    name:"Newcastle University", city:"Newcastle", course:"MSc Advanced Data Science",
+    visa:"Very High", fee:31700, schGuar:8000, schMax:15850,
+    guarDL:null, maxDL:null, twoYr:"No",
+    delivery:"Dissertation, oral presentation, poster, report, written examination",
+    reasons:"Russell Group — Max scholarship = 50% of fee"
+  },
+  {
+    name:"Queen Mary University of London", city:"London", course:"MSc Data Science",
+    visa:"Very High", fee:35250, schGuar:7000, schMax:null,
+    guarDL:null, maxDL:null, twoYr:"No",
+    delivery:"Thesis, presentation and viva examination, coursework, written examination",
+    reasons:"Not as highly ranked as others on this list"
+  },
+  {
+    name:"Royal Holloway University of London", city:"London", course:"MSc Data Science & Analytics",
+    visa:"High", fee:29300, schGuar:6000, schMax:null,
+    guarDL:null, maxDL:null, twoYr:"Yes",
+    delivery:"Coursework, small group projects, and examinations",
+    reasons:"University of London Campus"
+  },
+  {
+    name:"University of Southampton", city:"Southampton", course:"MSc Data Science",
+    visa:"Very High", fee:35000, schGuar:2000, schMax:null,
+    guarDL:null, maxDL:null, twoYr:"No",
+    delivery:"Exams, lab reports, exercises, projects, dissertation",
+    reasons:"Russell Group"
+  },
+  {
+    name:"University of Strathclyde", city:"Glasgow", course:"MSc Advanced Data Science",
+    visa:"High", fee:26900, schGuar:6000, schMax:8000,
+    guarDL:null, maxDL:null, twoYr:"No",
+    delivery:"Coursework and written examinations",
+    reasons:"Triple Accredited Business Institution"
+  },
+];
+
+// Pre-compute net values
+// For sorting and metrics, treat NS (null) as 0 saving (conservative)
+unis.forEach(u => {
+  u.guarAmt = (u.schGuar != null && u.schGuar > 0) ? u.schGuar : 0;
+  u.maxAmt  = (u.schMax  != null && u.schMax  > 0) ? u.schMax  : u.guarAmt;
+  u.netGuar = u.fee - u.guarAmt;
+  u.netMax  = u.fee - u.maxAmt;
+});
+
+const maxFee = Math.max(...unis.map(u => u.fee));
+const visaOrder = {"Very High":0,"High":1,"Moderate":2,"Lowest":3};
+
+function fmt(n) { return "£" + Math.round(n).toLocaleString("en-GB"); }
+function pct(save, gross) { return Math.round(save / gross * 100) + "% off"; }
+function vbcls(v) { return v==="Very High"?"bvh":v==="High"?"bh":v==="Moderate"?"bm":"bl"; }
+
+const SORTS = {
+  "name":          (a,b) => a.name.localeCompare(b.name),
+  "fee_asc":       (a,b) => a.fee - b.fee,
+  "fee_desc":      (a,b) => b.fee - a.fee,
+  "guar_desc":     (a,b) => b.guarAmt - a.guarAmt,
+  "max_desc":      (a,b) => b.maxAmt  - a.maxAmt,
+  "visa":          (a,b) => (visaOrder[a.visa]??9) - (visaOrder[b.visa]??9),
+  "city":          (a,b) => a.city.localeCompare(b.city),
+  "net_guar_asc":  (a,b) => a.netGuar - b.netGuar,
+  "net_guar_desc": (a,b) => b.netGuar - a.netGuar,
+  "net_max_asc":   (a,b) => a.netMax  - b.netMax,
+  "net_max_desc":  (a,b) => b.netMax  - a.netMax,
+  "gross_asc":     (a,b) => a.fee - b.fee,
+  "gross_desc":    (a,b) => b.fee - a.fee,
+  "guar_saving":   (a,b) => b.guarAmt - a.guarAmt,
+  "max_saving":    (a,b) => b.maxAmt  - a.maxAmt,
+};
+
+function filtered(prefix, hasYr) {
+  const city = document.getElementById(prefix+"-city").value;
+  const visa = document.getElementById(prefix+"-visa").value;
+  const yr   = hasYr ? document.getElementById(prefix+"-yr").value : "";
+  const q    = document.getElementById(prefix+"-search").value.toLowerCase();
+  return unis.filter(u => {
+    if (city && u.city !== city) return false;
+    if (visa && u.visa !== visa) return false;
+    if (yr   && u.twoYr !== yr)  return false;
+    if (q    && !u.name.toLowerCase().includes(q)) return false;
+    return true;
+  });
+}
+
+let c1Sort = "name", c2Sort = "net_guar_asc";
+
+// ── TAB 1 ─────────────────────────────────────────
+function renderT1() {
+  const data = [...filtered("c1", true)].sort(SORTS[c1Sort]);
+  const fees  = data.map(u => u.fee);
+  const schVals = data.filter(u => u.schGuar > 0).map(u => u.schGuar);
+
+  document.getElementById("c1-count").textContent = data.length;
+  document.getElementById("c1-fee").textContent   = fees.length ? fmt(fees.reduce((a,b)=>a+b)/fees.length) : "—";
+  document.getElementById("c1-sch").textContent   = schVals.length ? fmt(schVals.reduce((a,b)=>a+b)/schVals.length) : "—";
+  document.getElementById("c1-vh").textContent    = data.filter(u => u.visa==="Very High").length;
+
+  const g = document.getElementById("c1-grid");
+  if (!data.length) { g.innerHTML = '<div class="nores">No results match your filters.</div>'; return; }
+
+  g.innerHTML = data.map(u => {
+    function schCell(val, deadline) {
+      if (val === null) return `<div class="ib-val ns">Not sure</div>`;
+      if (val === 0)    return `<div class="ib-val ns">Not available</div>`;
+      return `<div class="ib-val">${fmt(val)}</div>${deadline ? `<div class="ib-note">⚑ ${deadline}</div>` : ""}`;
+    }
+    return `
+    <div class="card">
+      <div class="ch">
+        <div>
+          <div class="uname">${u.name}</div>
+          <div class="umeta">${u.city} &middot; ${u.course}</div>
+        </div>
+        <div class="bgs">
+          <span class="bg ${vbcls(u.visa)}">${u.visa} visa</span>
+          ${u.twoYr==="Yes" ? '<span class="bg b2">2-yr option</span>' : ""}
+        </div>
+      </div>
+      <div class="ig">
+        <div><div class="ib-lbl">Tuition fee</div><div class="ib-val">${fmt(u.fee)}</div></div>
+        <div><div class="ib-lbl">Guaranteed sch.</div>${schCell(u.schGuar, u.guarDL)}</div>
+        <div><div class="ib-lbl">Max scholarship</div>${schCell(u.schMax, u.maxDL)}</div>
+        <div><div class="ib-lbl">City</div><div class="ib-val">${u.city}</div></div>
+      </div>
+      <hr class="cdiv">
+      <div class="cdet">${u.delivery}</div>
+      <div class="crea">${u.reasons}</div>
+    </div>`;
+  }).join("");
+}
+
+// ── TAB 2 ─────────────────────────────────────────
+function renderT2() {
+  const data = [...filtered("c2", true)].sort(SORTS[c2Sort]);
+  const n = data.length;
+  if (!n) { document.getElementById("c2-grid").innerHTML = '<div class="nores">No results match your filters.</div>'; return; }
+
+  const avgG    = data.reduce((a,u)=>a+u.fee,     0)/n;
+  const avgGuar = data.reduce((a,u)=>a+u.netGuar, 0)/n;
+  const avgMax  = data.reduce((a,u)=>a+u.netMax,  0)/n;
+
+  document.getElementById("c2-gross").textContent = fmt(avgG);
+  document.getElementById("c2-guar").textContent  = fmt(avgGuar);
+  document.getElementById("c2-gsub").textContent  = "avg saving " + fmt(avgG-avgGuar) + " (" + Math.round((avgG-avgGuar)/avgG*100) + "%)";
+  document.getElementById("c2-max").textContent   = fmt(avgMax);
+  document.getElementById("c2-msub").textContent  = "avg saving " + fmt(avgG-avgMax) + " (" + Math.round((avgG-avgMax)/avgG*100) + "%)";
+
+  document.getElementById("c2-grid").innerHTML = data.map(u => {
+    const bGross = Math.round(u.fee/maxFee*100);
+    const bGuar  = Math.round(u.netGuar/maxFee*100);
+    const bMax   = Math.round(u.netMax/maxFee*100);
+
+    // Guaranteed column
+    let gAmt, gSave;
+    if (u.schGuar === null) {
+      gAmt  = `<div class="fcamt ns">Not sure</div>`;
+      gSave = `<div class="fcsave fcsave-no">unconfirmed</div>`;
+    } else if (u.schGuar === 0) {
+      gAmt  = `<div class="fcamt fcamt-g">${fmt(u.fee)}</div>`;
+      gSave = `<div class="fcsave fcsave-no">not available</div>`;
+    } else {
+      gAmt  = `<div class="fcamt fcamt-g">${fmt(u.netGuar)}</div>`;
+      gSave = `<div class="fcsave fcsave-g">save ${fmt(u.guarAmt)} &middot; ${pct(u.guarAmt, u.fee)}</div>`;
+    }
+    if (u.guarDL) gSave += `<div class="fcdl">⚑ ${u.guarDL}</div>`;
+
+    // Max column
+    let mAmt, mSave;
+    if (u.schMax === null) {
+      mAmt  = `<div class="fcamt ns">Not sure</div>`;
+      mSave = `<div class="fcsave fcsave-no">unconfirmed</div>`;
+    } else if (u.maxAmt === u.guarAmt) {
+      mAmt  = `<div class="fcamt fcamt-bl">${fmt(u.netMax)}</div>`;
+      mSave = `<div class="fcsave fcsave-no">same as guaranteed</div>`;
+    } else {
+      mAmt  = `<div class="fcamt fcamt-bl">${fmt(u.netMax)}</div>`;
+      mSave = `<div class="fcsave fcsave-bl">save ${fmt(u.maxAmt)} &middot; ${pct(u.maxAmt, u.fee)}</div>`;
+    }
+    if (u.maxDL) mSave += `<div class="fcdl">⚑ Apply by ${u.maxDL}</div>`;
+
+    // Footer note
+    const parts = [];
+    if (u.schGuar === null)    parts.push("Guaranteed: Not sure");
+    else if (u.schGuar === 0)  parts.push("No guaranteed scholarship");
+    else                       parts.push("Guaranteed: " + fmt(u.schGuar));
+    if (u.schMax === null)                           parts.push("Max: Not sure");
+    else if (u.schMax && u.schMax !== u.schGuar)     parts.push("Max: " + fmt(u.schMax));
+
+    return `
+    <div class="card">
+      <div class="ch" style="margin-bottom:12px">
+        <div>
+          <div class="uname">${u.name}</div>
+          <div class="umeta">${u.city} &middot; ${u.course}</div>
+        </div>
+        <div class="bgs">
+          <span class="bg ${vbcls(u.visa)}">${u.visa} visa</span>
+          ${u.twoYr==="Yes" ? '<span class="bg b2">2-yr option</span>' : ""}
+        </div>
+      </div>
+      <div class="frow">
+        <div class="fc fcb">
+          <div class="fclbl fclbl-b">Gross tuition</div>
+          <div class="fcamt fcamt-b">${fmt(u.fee)}</div>
+        </div>
+        <div class="fc fcg">
+          <div class="fclbl fclbl-g">After guaranteed sch.</div>
+          ${gAmt}${gSave}
+        </div>
+        <div class="fc fcbl">
+          <div class="fclbl fclbl-bl">After max scholarship</div>
+          ${mAmt}${mSave}
+        </div>
+      </div>
+      <div class="btrack">
+        <div class="bseg bsgross" style="width:${bGross}%"></div>
+        <div class="bseg bsguar"  style="width:${bGuar}%"></div>
+        <div class="bseg bsmax"   style="width:${bMax}%"></div>
+      </div>
+      <div class="bleg">
+        <span><span class="dot" style="background:#d3d1c7"></span>Gross</span>
+        <span><span class="dot" style="background:var(--gbar)"></span>Net (guaranteed)</span>
+        <span><span class="dot" style="background:var(--bbar)"></span>Net (max)</span>
+      </div>
+      <div class="schnote">${parts.join(" &nbsp;·&nbsp; ")}</div>
+    </div>`;
+  }).join("");
+}
+
+// ── Switching & wiring ─────────────────────────────
+function switchTab(t) {
+  document.getElementById("tab-compare").style.display = t==="compare" ? "block" : "none";
+  document.getElementById("tab-fees").style.display    = t==="fees"    ? "block" : "none";
+  document.querySelectorAll(".tbtn").forEach((b,i) =>
+    b.classList.toggle("active", (i===0&&t==="compare")||(i===1&&t==="fees"))
+  );
+}
+
+document.querySelectorAll(".sbtn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const tab = btn.dataset.tab;
+    document.querySelectorAll(`.sbtn[data-tab="${tab}"]`).forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    if (tab==="c1") { c1Sort = btn.dataset.sort; renderT1(); }
+    else            { c2Sort = btn.dataset.sort; renderT2(); }
+  });
+});
+
+["c1-city","c1-visa","c1-yr","c1-search"].forEach(id =>
+  document.getElementById(id).addEventListener("input", renderT1)
+);
+["c2-city","c2-visa","c2-yr","c2-search"].forEach(id =>
+  document.getElementById(id).addEventListener("input", renderT2)
+);
+
+renderT1();
+renderT2();
+</script>
+</body>
+</html>
